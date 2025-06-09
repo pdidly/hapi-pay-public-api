@@ -1,53 +1,60 @@
-# hAPI Pay - Public UK Payroll Calculator API
+# hAPI Pay - Public UK Payroll API + Calculators
 
-[![CI](https://img.shields.io/badge/Tests-passing-brightgreen)]()
-
-**hAPI Pay** is the UK’s first API-first payroll calculator backend:
-
-✅ Public API endpoints (SEO-friendly)  
-✅ Take-Home Pay calculator  
-✅ Tax-only calculator  
-✅ NI-only calculator  
-✅ Student Loan-only calculator  
-✅ Overpayment calculator with PDF export  
-✅ PayrollRun API → run payroll per employee → full API  
-✅ Payslip PDF export → branded template  
-✅ Ready for RTI phase 2 → FPS/EPS/Corrected FPS planned  
-✅ Fully tested with CI support  
-
----
+**hAPI Pay** is a lean, API-first UK payroll engine and calculator platform designed to operate as a simple, low-maintenance SaaS for self-service users.
 
 ## Features
 
-✅ Public Calculators API (SEO + traffic):
+✅ Public Calculators API (SEO + organic growth funnel):
 
-- `POST /api/calculators/take-home/`
-- `POST /api/calculators/tax-only/`
-- `POST /api/calculators/ni-only/`
-- `POST /api/calculators/student-loan-only/`
-- `POST /api/calculators/overpayment/`
-- `GET /api/calculators/overpayment/<id>/pdf/`
+- Take-home pay calculator → gross → net → tax → NI → student loan
+- Tax-only calculator
+- NI-only calculator
+- Student Loan-only calculator
+- Overpayment Refund Calculator (full spec implemented)
+- Public Payslip PDF endpoint
 
-✅ Paid Core Payroll Engine:
+✅ Paid Core Payroll API:
 
-- `POST /api/payroll/runs/`
-- `GET /api/payroll/runs/`
-- `GET /api/payroll/runs/<id>/`
-- `GET /api/payroll/runs/<id>/payslip/pdf/`
+- PayrollRun model → gross → net → tax → NI → SL
+- Store original calculation and corrected calculation
+- View differences → regenerate payslip
+- Branded Payslip PDF generation (WeasyPrint / HTML fallback)
+- Ready for FPS / EPS RTI submission integration
 
-✅ Full unit test coverage → `python manage.py test`  
-✅ GitHub Actions CI template provided  
+✅ Core System Architecture:
 
----
+- ActivityLog model → full user action tracking → reduces support tickets
+- EmailSender util → send templated onboarding / alert emails → proactive communication
+- GitHub Actions CI → full test coverage maintained on every push
+- Single Django + DRF backend → no bloat → easy to maintain as a solo founder
+- Optimised for SEO-driven growth → public calculators exposed as API
 
-## Setup Instructions
+## Philosophy
 
-1️⃣ Clone this repo  
-2️⃣ Create and activate a virtualenv:
+hAPI Pay is intentionally designed to be:
 
-```bash
-python -m venv venv
-# Windows:
-venv\Scripts\activate
-# Linux/Mac:
-source venv/bin/activate
+✅ Simple → avoid unnecessary complexity  
+✅ Self-service first → 99% of actions can be completed without contacting support  
+✅ Clear communication → proactive emails and activity logging built-in  
+✅ Maintainable → easy to operate and extend with ChatGPT + VS Code  
+✅ Low-cost infrastructure → single server / single DB → scalable to £5k–£10k/month MRR with minimal cost  
+✅ SEO-first → public calculators are primary acquisition funnel  
+
+## Project Structure
+hapi_pay_calc/
+├── calculators/
+├── payroll/
+├── core/
+├── .github/workflows/
+├── templates/
+├── requirements.txt
+├── setup.sh
+├── Makefile
+├── README.md
+└── manage.py
+
+# One-time setup
+git clone https://github.com/pdidly/hapi-pay-public-api.git
+cd hapi-pay-public-api
+./setup.sh
+
