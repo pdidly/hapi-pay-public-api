@@ -1,0 +1,93 @@
+{
+  "info": {
+    "name": "hAPI Pay Public API v1",
+    "_postman_id": "b508b7fa-0f2e-4b3f-8d7c-5d7c9a0ef12b",
+    "description": "Postman collection for hAPI Pay public API and core endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Take-Home Calculator",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"gross\": 50000,\n    \"tax_year\": \"2025\",\n    \"student_loan_plan\": \"Plan 2\"\n}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/calculators/take-home/",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["api", "calculators", "take-home", ""]
+        }
+      }
+    },
+    {
+      "name": "Overpayment Calculator",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"tax_year\": \"2025\",\n    \"month_op_occurred\": \"December\",\n    \"taxable_pay_ytd\": \"35000.00\",\n    \"tax_paid_ytd\": \"6000.00\",\n    \"prev_tax_ni_deducted\": \"200.00\",\n    \"paid_data\": {\n        \"December\": {\n            \"tax_code\": \"1257L\",\n            \"tax_code_basis\": \"Cumulative\",\n            \"ni_category\": \"A\",\n            \"pension_percent\": 5,\n            \"pension_salary_sacrifice\": false,\n            \"student_loan_plan\": \"Plan 2\",\n            \"pensionable_pay\": 3000,\n            \"gross_pay\": 3500,\n            \"deductions\": {\n                \"pension\": 150,\n                \"paye\": 500,\n                \"ni\": 300,\n                \"student_loan\": 100,\n                \"net_pay\": 2450\n            }\n        }\n    },\n    \"due_data\": {\n        \"December\": {}\n    },\n    \"difference_data\": {}\n}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/calculators/overpayment/",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["api", "calculators", "overpayment", ""]
+        }
+      }
+    },
+    {
+      "name": "Create PayrollRun",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"payroll_date\": \"2025-06-06\",\n    \"original_calculation\": {\n        \"gross\": 40000,\n        \"tax\": 8000,\n        \"ni\": 4800,\n        \"student_loan\": 3600,\n        \"net\": 23600\n    },\n    \"corrected_calculation\": {},\n    \"difference\": {},\n    \"fps_submitted_original\": false,\n    \"fps_submitted_corrected\": false\n}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/payroll/runs/",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["api", "payroll", "runs", ""]
+        }
+      }
+    },
+    {
+      "name": "Payslip PDF for PayrollRun ID 1",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/payroll/runs/1/payslip/pdf/",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["api", "payroll", "runs", "1", "payslip", "pdf", ""]
+        }
+      }
+    }
+  ]
+}
