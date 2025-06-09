@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Overpayment Calculation Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; font-size: 14px; }
+        h1 { color: #2E86C1; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>Overpayment Calculation Report</h1>
+
+    <p><strong>Tax Year:</strong> {{ calculation.tax_year }}</p>
+    <p><strong>Month Overpayment Occurred:</strong> {{ calculation.month_op_occurred }}</p>
+    <p><strong>Taxable Pay YTD:</strong> {{ calculation.taxable_pay_ytd }}</p>
+    <p><strong>Tax Paid YTD:</strong> {{ calculation.tax_paid_ytd }}</p>
+    <p><strong>Previous Tax/NI Deducted:</strong> {{ calculation.prev_tax_ni_deducted }}</p>
+
+    <h2>Paid Data</h2>
+    {% for month, data in calculation.paid_data.items %}
+        <h3>{{ month }}</h3>
+        <table>
+            <tr><th>Tax Code</th><td>{{ data.tax_code }}</td></tr>
+            <tr><th>Tax Code Basis</th><td>{{ data.tax_code_basis }}</td></tr>
+            <tr><th>NI Category</th><td>{{ data.ni_category }}</td></tr>
+            <tr><th>Pension %</th><td>{{ data.pension_percent }}</td></tr>
+            <tr><th>Pension Salary Sacrifice</th><td>{{ data.pension_salary_sacrifice }}</td></tr>
+            <tr><th>Student Loan Plan</th><td>{{ data.student_loan_plan }}</td></tr>
+            <tr><th>Pensionable Pay</th><td>{{ data.pensionable_pay }}</td></tr>
+            <tr><th>Gross Pay</th><td>{{ data.gross_pay }}</td></tr>
+            <tr><th>Deductions</th><td>
+                Pension: {{ data.deductions.pension }}<br>
+                PAYE: {{ data.deductions.paye }}<br>
+                NI: {{ data.deductions.ni }}<br>
+                Student Loan: {{ data.deductions.student_loan }}<br>
+                Net Pay: {{ data.deductions.net_pay }}
+            </td></tr>
+        </table>
+    {% endfor %}
+
+    <h2>Due Data</h2>
+    <pre>{{ calculation.due_data|safe }}</pre>
+
+    <h2>Difference Data</h2>
+    <pre>{{ calculation.difference_data|safe }}</pre>
+</body>
+</html>
+

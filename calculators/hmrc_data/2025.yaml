@@ -1,0 +1,25 @@
+# Personal Allowance
+personal_allowance: 12570
+
+# Tax bands
+basic_rate_upper_limit: 50270
+basic_rate_percent: 20
+higher_rate_upper_limit: 125140
+higher_rate_percent: 40
+additional_rate_percent: 45
+
+# National Insurance
+ni_primary_threshold: 12570
+ni_upper_earnings_limit: 50270
+ni_class1_primary_percent: 12
+ni_class1_upper_percent: 2
+
+# Student Loan
+student_loan_plan_1_threshold: 24291
+student_loan_plan_1_percent: 9
+student_loan_plan_2_threshold: 27295
+student_loan_plan_2_percent: 9
+student_loan_plan_4_threshold: 27660
+student_loan_plan_4_percent: 9
+student_loan_plan_5_threshold: 25000
+student_loan_plan_5_percent: 9

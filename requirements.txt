@@ -1,0 +1,4 @@
+Django==5.2.2
+djangorestframework==3.16.0
+PyYAML==6.0.2
+WeasyPrint==65.1

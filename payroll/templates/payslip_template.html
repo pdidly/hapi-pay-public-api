@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payslip</title>
+    <style>
+        body { font-family: Arial, sans-serif; font-size: 14px; }
+        h1 { color: #2E86C1; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>Payslip</h1>
+    <p><strong>Payroll Date:</strong> {{ payroll.payroll_date }}</p>
+
+    <h2>Original Calculation</h2>
+    <table>
+        <tr><th>Gross Pay</th><td>{{ payroll.original_calculation.gross }}</td></tr>
+        <tr><th>Tax</th><td>{{ payroll.original_calculation.tax }}</td></tr>
+        <tr><th>NI</th><td>{{ payroll.original_calculation.ni }}</td></tr>
+        <tr><th>Student Loan</th><td>{{ payroll.original_calculation.student_loan }}</td></tr>
+        <tr><th>Net Pay</th><td>{{ payroll.original_calculation.net }}</td></tr>
+    </table>
+
+    <h2>Corrected Calculation</h2>
+    <pre>{{ payroll.corrected_calculation|safe }}</pre>
+
+    <h2>Difference</h2>
+    <pre>{{ payroll.difference|safe }}</pre>
+
+    <p><strong>FPS Submitted (Original):</strong> {{ payroll.fps_submitted_original }}</p>
+    <p><strong>FPS Submitted (Corrected):</strong> {{ payroll.fps_submitted_corrected }}</p>
+</body>
+</html>
