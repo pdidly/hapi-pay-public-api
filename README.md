@@ -57,4 +57,20 @@ hapi_pay_calc/
 git clone https://github.com/pdidly/hapi-pay-public-api.git
 cd hapi-pay-public-api
 ./setup.sh
+## Core Components
+
+### ActivityLog
+
+Tracks key user actions across the system.
+
+Example:
+
+```python
+from core.models import ActivityLog
+
+ActivityLog.objects.create(
+    user_identifier="user@example.com",
+    action="Generated Payslip",
+    details="PayrollRun ID 12345"
+)
 
